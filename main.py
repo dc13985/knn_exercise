@@ -23,6 +23,10 @@ print(clear)
             
 dl.get_data("iris_flower.txt", 0.67, training_set, test_set)
 
+#soup = dl.soup_set("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data")
+#dataset = dl.struct_soup(soup)
+#dl.sort_sets(dataset, 0.67, training_set, test_set)
+
 option = dh.test_opt()
 
 if option == '1':
