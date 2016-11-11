@@ -18,14 +18,25 @@ test_set = []
 neighbours = []   
 categories = []     
 
-clear = "\n" * 10
+clear = "\n" * 50
 print(clear)
-            
-dl.get_data("iris_flower.txt", 0.67, training_set, test_set)
 
-#soup = dl.soup_set("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data")
-#dataset = dl.struct_soup(soup)
-#dl.sort_sets(dataset, 0.67, training_set, test_set)
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Data Access ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+
+source_choice = dl.source_opt()
+
+if source_choice == 'y':
+    dl.get_data("iris_flower.txt", 0.67, training_set, test_set)
+elif source_choice == 'n':
+    print("\nOK, the data will be accessed at its source online \n")
+    soup = dl.soup_set("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data")
+    dataset = dl.struct_soup(soup)
+    dl.sort_sets(dataset, 0.67, training_set, test_set)
+else:
+    print("there has been a selection error")
+
+
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Calculations ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 
 option = dh.test_opt()
 
@@ -46,6 +57,9 @@ else:
 
 
 ######### Plots #############
+
+print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Graph Plotting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+
 headers = ["sepal length", "sepal width", "petal length", "petal width"]
 
 print("\nYou now have the option to view the data set as a scatter plot \n")
